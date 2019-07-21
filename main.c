@@ -17,7 +17,7 @@ typedef struct
 {
     char* roman[32];
     int count;
-    char* comment;
+    char* name;
     char* quality;
 }
 Progression;
@@ -974,6 +974,10 @@ static const Chord chords[] = {
 
 static const Progression progs[] = {
     { { "I", "IV", "ii", "V" }, 4, "Montgomery-Ward bridge", "Major" },
+    { { "I", "vi", "IV", "V" }, 4, "50s progression", "Major" },
+    { { "vi", "ii", "V", "I" }, 4, "Circle Progression", "Major" },
+    { { "ii", "V", "I"       }, 3, "ii-V I Progression", "Major" },
+    { { "i", "VII", "i", "V", "III", "VII", "i", "V", "i" }, 9, "Passamezzo antico", "Minor" },
 };
 
 static Key Get(const Keynum keynum)
@@ -1021,7 +1025,7 @@ static int Query(const char* const query)
 
 static void Print(const Chord chord)
 {
-    printf("%s %s %s\n", chord.name, chord.fingering, chord.comment);
+    printf("%s %s %s\n", chord.name, chord.fingering, chord.name);
 }
 
 static Chord Choose(const char* const query)
@@ -1047,8 +1051,10 @@ static void Dump(const Progression prog)
 static void Generate(void)
 {
     const Keynum keynum = (Keynum) (rand() % KEYNUM_COUNT);
-    const Progression prog = progs[0];
+    const int index = rand() % LEN(progs);
+    const Progression prog = progs[index];
     puts(ToString(keynum));
+    puts(prog.name);
     Dump(prog);
     for(int i = 0; i < prog.count; i++)
     {
