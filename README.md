@@ -1,7 +1,7 @@
 # PROGEN (Progression Generator)
 
 ProGen generates a random chord progressions based on popular western progressions.
-Tonality laws of chords major / minor chords are not truley respected as "best fit" chords are dropped in at random.
+Tonality laws of major / minor chords are not truley respected as "best fit" chords are dropped in at random.
 Run the progression generator again if the progression you got wasn't that great!
 
 To get started:
